@@ -1,0 +1,102 @@
+{
+   "ID": "",
+   "Name": "Jenkins",
+   "Version": "1",
+   "Description": "Jenkins / customized by www.monitoringartist.com",
+   "Services": [
+     {
+       "Name": "Jenkins",
+       "Title": "Jenkins",
+       "Version": "1",
+       "Command": "/bin/tini -- /usr/local/bin/jenkins.sh",
+       "Description": "Jenkins / customized by www.monitoringartist.com",
+       "Tags": [
+         "daemon"
+       ],
+       "ImageID": "monitoringartist/controlcenterjenkins:latest",
+       "Instances": {
+         "Min": 1,
+         "Max": 1,
+         "Default": 0
+       },
+       "ChangeOptions": null,
+       "Launch": "auto",
+       "HostPolicy": "",
+       "Hostname": "",
+       "Privileged": false,
+       "ConfigFiles": null,
+       "Context": {
+       },
+       "Endpoints": [
+         {
+           "Name": "jenkins",
+           "Purpose": "export",
+           "Protocol": "tcp",
+           "PortNumber": 8080,
+           "PortTemplate": "",
+           "VirtualAddress": "",
+           "Application": "Jenkins",
+           "ApplicationTemplate": "",
+           "AddressConfig": {
+             "Port": 0,
+             "Protocol": ""
+           },
+           "VHosts": [
+             "jenkins"
+           ]
+         }
+       ],
+       "Tasks": null,
+       "LogFilters": null,
+       "Volumes": [
+         {
+           "Owner": "root:root",
+           "Permission": "0777",
+           "ResourcePath": "jenkins_home",
+           "ContainerPath": "/var/jenkins_home",
+           "Type": ""
+         }
+       ],
+       "LogConfigs": null,
+       "Snapshot": {
+         "Pause": "",
+         "Resume": ""
+       },
+       "RAMCommitment": "2048M",
+       "CPUCommitment": 1,
+       "Runs": null,
+       "Actions": null,
+       "HealthChecks": {
+         "web responding": {
+           "Script": "curl -f -s http://localhost:8080/ \u003e /dev/null",
+           "Interval": 60,
+           "Timeout": 5
+         }
+       },
+       "Prereqs": null,
+       "MonitoringProfile": {
+         "MetricConfigs": null,
+         "GraphConfigs": null,
+         "ThresholdConfigs": null
+       },
+       "MemoryLimit": 0,
+       "CPUShares": 0,
+       "PIDFile": ""
+     }
+   ],
+   "ConfigFiles": null,
+   "ServicedVersion": {
+     "Version": "0.10.0",
+     "Date": "Mon Nov 24 17:40:37 UTC 2014",
+     "Gitbranch": "master",
+     "Gitcommit": "e80a617",
+     "Giturl": "",
+     "Buildtag": "0"
+   },
+   "TemplateVersion": {
+     "branch": "unknown",
+     "commit": "unknown",
+     "repo": "unknown",
+     "tag": "unknown"
+   }
+}
